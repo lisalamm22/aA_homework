@@ -10,7 +10,7 @@ class PlayDBConnection < SQLite3::Database
     self.results_as_hash = true
   end
 end
-
+require 'byebug'
 class Play
   attr_accessor :id, :title, :year, :playwright_id
 
@@ -20,18 +20,19 @@ class Play
   end
 
   def self.find_by_title(title)
-    data = PlayDBConnection.instance.execute(<<-SQL)
+    data = PlayDBConnection.instance.execute(<<-SQL, title: title)
       SELECT 
         * 
       FROM 
         plays 
       WHERE 
-        plays.title = title
+        plays.title = :title
     SQL
+    debugger
   end
 
   def self.find_by_playwright(name)
-    data = PlayDBConnection.instance.execute(<<-SQL)
+    data = PlayDBConnection.instance.execute(<<-SQL, name)
       SELECT 
         * 
       FROM 
@@ -39,7 +40,7 @@ class Play
       JOIN
         playwrights ON playwrights.id = plays.playwright_id
       WHERE 
-        playwrights.name = name
+        playwrights.name = ?
     SQL
   end
 

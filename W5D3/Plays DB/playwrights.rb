@@ -16,17 +16,17 @@ class Playwright
 
   def self.all
     data = PlayDBConnection.instance.execute("SELECT * FROM playwrights")
-    data.map { |datum| Play.new(datum) }
+    data.map { |datum| Playwright.new(datum) }
   end
 
   def self.find_by_title(name)
-    data = PlayDBConnection.instance.execute(<<-SQL)
+    data = PlayDBConnection.instance.execute(<<-SQL, name)
       SELECT 
         * 
       FROM 
         playwrights 
       WHERE 
-        playwrights.name = name
+        playwrights.name = ?
     SQL
   end
 
