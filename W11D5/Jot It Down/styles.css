@@ -1,0 +1,57 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    /* border: 2px black solid; */
+}
+
+.nav-reverse{
+        flex-direction: row-reverse;
+}
+
+a{
+    text-decoration: none;
+    color: grey;
+    text-transform: lowercase;
+}
+
+.splash{
+    display: flex;
+    /* border: 2px black solid; */
+}
+.splash-bg{
+    width: 50%
+}
+
+.splash-welcome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%
+}
+
+.authlinks{
+    display: flex;
+}
+
+.auth{
+    border: 2px teal solid;
+    background-color: teal;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.logo{
+    width:3%;
+}
+
+form{
+    display: flex;
+    margin: 10px;
+}
